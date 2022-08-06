@@ -1,11 +1,36 @@
 import {StyleSheet} from "react-native";
 
-export default StyleSheet.create({
+const HS = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
+        backgroundColor: "#fff",
+        alignItems: "center",
+    },
+    HomeText: {
+        color: "#61dafb",
+        fontSize: 20,
+        fontWeight: "bold",
+        marginBottom: 36,
+
+    },
+    Button: {},
+    ButtonText: {},
+})
+
+const typography = StyleSheet.create({
+    header: {
+        color: "#61dafb",
+        fontSize: 30,
+        marginBottom: 36
+    }
+})
+
+const main = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: "#fff",
+        alignItems: "center",
+        justifyContent: "center",
     },
     button: {
         backgroundColor: "blue",
@@ -15,5 +40,7 @@ export default StyleSheet.create({
     buttonText: {
         fontSize: 20,
         color: "white"
-    }
+    },
 })
+
+export default StyleSheet;
