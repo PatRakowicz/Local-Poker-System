@@ -1,5 +1,8 @@
 import {StyleSheet} from "react-native";
 
+// Shit the bed - doesnt work as I would like it to work
+// URL - https://www.youtube.com/watch?v=lSTg5MFYSUA
+
 const HS = StyleSheet.create({
     container: {
         flex: 1,
