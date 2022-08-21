@@ -5,26 +5,33 @@ import {Button, Text, TouchableOpacity, View} from 'react-native';
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import {NavigationContainer} from "@react-navigation/native";
 
+
 const Stack = createNativeStackNavigator();
 
+
+/*
+
+* */
 
 // Home Screen w/ options - new game - version
 function HomeScreen({navigation}) {
     return (
-        <View style={SS.HS.container}>
 
-            {/*<TouchableOpacity
-                onPress={() => navigation.navigate('New Game')} style={SS.button}>
-                <Text style={SS.buttonText}>Players</Text>
-            </TouchableOpacity>*/}
+        /*TODO: Not in center*/
+        <View style={SS.home_container}>
 
-            <Text> Home Screen</Text>
+            <Text style={SS.home_text}>L P S</Text>
 
-            <Text style={SS.HS.HomeText}>LPS</Text>
+            <TouchableOpacity
+                onPress={() => navigation.navigate('New Game')} style={SS.home_ngmButton}>
+                <Text style={SS.ngm_buttonText}>Players</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+                OnPress={() => navigation.navigate('Settings')} style={SS}>
+                <Text style={SS}>Settings</Text>
+            </TouchableOpacity>
 
-            {/*TODO: Options*/}
             {/*TODO: Version*/}
-
         </View>
     );
 }
@@ -32,25 +39,24 @@ function HomeScreen({navigation}) {
 // New Game Page
 function NewGameMenu({navigation}) {
     return (
-        <View style={SS.main.container}>
-            <View style={SS.main.container}>
+        <View style={SS.ngm_container}>
 
-                <Text>The start of LPS (Local Poker System)</Text>
-                <StatusBar style="auto"/>
+            <Text>The start of LPS (Local Poker System)</Text>
+            <StatusBar style="auto"/>
 
-                <TouchableOpacity
-                    onPress={() => alert('Hello World')} style={SS.main.button}>
-                    <Text style={SS.main.buttonText}>New Game</Text>
-                </TouchableOpacity>
+            <TouchableOpacity
+                onPress={() => alert('Hello World')} style={SS.ngm_button}>
+                <Text style={SS.ngm_buttonText}>New Game</Text>
+            </TouchableOpacity>
 
-                <Button
-                    onPress={() => alert("Learning More")}
-                    title="Learn More"
-                    color="#841584"
-                    accessibilityLabel="Learn more about this purple button"
-                />
+            <Button
+                onPress={() => alert("Learning More")}
+                title="Learn More"
+                color="#841584"
+                accessibilityLabel="Learn more about this purple button"
+            />
 
-            </View>
+
         </View>
     );
 }
