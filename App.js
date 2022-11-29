@@ -1,34 +1,60 @@
 import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {StatusBar} from 'expo-status-bar';
-import {Text, View} from 'react-native';
-import {home, newGame} from "./StyleSheet";
+import {Button, Pressable, Text, View} from 'react-native';
+import {home, newGame, settings} from "./StyleSheet";
+import * as versionC from "./app.json";
 
 
-function HomeScreen() {
+function HomeScreen({navigation}) {
+
+    const version = versionC.expo.version;
+    // console.log(version);
     return (
         <View style={home.container}>
-            <Text>Open up App.js to start working on your app!</Text>
-            <Text>This is a text on how it will update if it will at all.</Text>
-            <StatusBar style="auto"/>
+            <Text style={home.textHeader}> Local Poker System</Text>
+            <Text style={home.version}>V: {version}</Text>
+            {/*<Button style={home.button} title={"Settings"} onPress={() => navigator.navigate('Settings')}/>*/}
+            <Pressable style={home.buttonSrtGme} onPress={() => navigation.navigate('Start Game')}>
+                <Text style={home.buttonText}>Start Game</Text>
+            </Pressable>
+            <Pressable style={home.buttonSett} onPress={() => navigation.navigate('Settings')}>
+                <Text style={home.buttonText}>Settings</Text>
+            </Pressable>
         </View>
     );
 }
 
-function DetailsScreen() {
+//TODO
+//  Different Settings need configured
+function Settings({navigation}) {
+
+    React.useEffect(() => {
+        // Use `setOptions` to update the button that we previously specified
+        // Now the button includes an `onPress` handler to update the count
+        navigation.setOptions({
+            headerRight: () => (
+                <Button onPress={() =>  navigation.navigate('Home')} title={"Save"}/>
+            ),
+        });
+    }, [navigation]);
+
     return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text>Details Screen</Text>
+        <View style={settings.container}>
+            <Text>Settings Page</Text>
         </View>
     );
 }
 
+//TODO
+//  Start game tracking system
 function StartGame() {
-    return (
-      <view style={newGame.container}>
 
-      </view>
+
+    return (
+        <View style={newGame.container}>
+            <Text>Start Game Page</Text>
+        </View>
     );
 }
 
@@ -37,10 +63,23 @@ const Stack = createNativeStackNavigator();
 export default function App() {
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName="Details">
-                <Stack.Screen name="Home" component={HomeScreen}/>
-                <Stack.Screen name="Start Game" component={StartGame}/>
-                <Stack.Screen name="Details" component={DetailsScreen}/>
+            <Stack.Navigator initialRouteName="Home">
+                <Stack.Screen name="Home"
+                              component={HomeScreen}
+                              options={{
+                                  headerShown: false,
+                              }}/>
+                <Stack.Screen name="Start Game"
+                              component={StartGame}
+                              options={{
+                                  headerBackVisible: false,
+                                  gestureEnabled: false,
+                              }}/>
+                <Stack.Screen name="Settings"
+                              component={Settings}
+                              options={{
+                                  headerBackVisible: false,
+                              }}/>
             </Stack.Navigator>
         </NavigationContainer>
     );
