@@ -14,7 +14,6 @@ function HomeScreen({navigation}) {
         <View style={home.container}>
             <Text style={home.textHeader}> Local Poker System</Text>
             <Text style={home.version}>V: {version}</Text>
-            {/*<Button style={home.button} title={"Settings"} onPress={() => navigator.navigate('Settings')}/>*/}
             <Pressable style={home.buttonSrtGme} onPress={() => navigation.navigate('Start Game')}>
                 <Text style={home.buttonText}>Start Game</Text>
             </Pressable>
@@ -34,7 +33,7 @@ function Settings({navigation}) {
         // Now the button includes an `onPress` handler to update the count
         navigation.setOptions({
             headerRight: () => (
-                <Button onPress={() =>  navigation.navigate('Home')} title={"Save"}/>
+                <Button onPress={() => navigation.navigate('Home')} title={"Save"}/>
             ),
         });
     }, [navigation]);
@@ -48,12 +47,27 @@ function Settings({navigation}) {
 
 //TODO
 //  Start game tracking system
-function StartGame() {
+//  Working on input Fields Ln. 53
+function StartGame({navigation}) {
 
+    const newBox = () => {
+        console.log("NewBox Created")
+    }
+
+    React.useEffect(() => {
+        navigation.setOptions({
+            headerRight: () => (
+                <Pressable style={newGame.btnAddPlyr} onPress={newBox}>
+                    <Text style={newGame.btnAddPlyrTxt}>New Player</Text>
+                </Pressable>
+            ),
+        });
+    }, [navigation]);
 
     return (
         <View style={newGame.container}>
             <Text>Start Game Page</Text>
+            <View style={newGame.RedBox}/>
         </View>
     );
 }

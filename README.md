@@ -68,3 +68,6 @@ Has calculator for chip value and x multiplier
 
 #### 10% | Not enough chips for other profiles
 - // TODO : calc 
+
+#### Recourses
+- [Dynamic Addition](https://www.freecodecamp.org/news/build-dynamic-forms-in-react/)

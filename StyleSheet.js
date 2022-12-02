@@ -51,6 +51,15 @@ export const newGame = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    btnAddPlyr: {},
+    btnAddPlyrTxt: {
+        color: 'green',
+    },
+    RedBox: {
+        width: 120,
+        height: 120,
+        backgroundColor: '#00BCD4'
+    }
 });
 
 export const settings = StyleSheet.create({
