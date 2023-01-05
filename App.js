@@ -1,9 +1,10 @@
 import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {Button, Pressable, Text, View} from 'react-native';
+import {Alert, Button, Pressable, Switch, Text, View} from 'react-native';
 import {home, newGame, settings} from "./StyleSheet";
 import * as versionC from "./app.json";
+import {useState} from "react";
 
 
 function HomeScreen({navigation}) {
@@ -56,19 +57,37 @@ function StartGame({navigation}) {
 //  Different Settings need configured
 function Settings({navigation}) {
 
-    React.useEffect(() => {
-        // Use `setOptions` to update the button that we previously specified
-        // Now the button includes an `onPress` handler to update the count
-        navigation.setOptions({
-            headerRight: () => (
-                <Button onPress={() => navigation.navigate('Home')} title={"Save"}/>
-            ),
-        });
-    }, [navigation]);
+
+    const showAlert = () => {
+        Alert.alert(
+            'Save Changes',
+            'Are you sure you want to save the changes?',
+            [
+                {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+                {text: 'Save', onPress: () => navigation.navigate('Home')},
+            ],
+            {cancelable: true},
+        );
+    };
+
+    const [isEnabled, setIsEnabled] = useState(false);
 
     return (
         <View style={settings.container}>
-            <Text>Settings Page</Text>
+            <Text>Enable option</Text>
+            <Switch
+                trackColor={{ false: "#767577", true: "#81b0ff" }}
+                thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
+                ios_backgroundColor="#3e3e3e"
+                onValueChange={setIsEnabled}
+                value={isEnabled}
+            />
+
+            <Pressable style={settings.buttonSave} onPress={showAlert}>
+                <Text style={settings.buttonText}>Save</Text>
+            </Pressable>
+
+
         </View>
     );
 }

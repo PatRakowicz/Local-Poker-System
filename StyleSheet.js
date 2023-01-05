@@ -69,4 +69,19 @@ export const settings = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    buttonSave: {
+        paddingVertical: 12,
+        paddingHorizontal: 32,
+        borderRadius: 4,
+        elevation: 3,
+        backgroundColor: 'darkorchid',
+        marginBottom: 50,
+    },
+    buttonText: {
+        fontSize: 16,
+        lineHeight: 21,
+        fontWeight: 'bold',
+        letterSpacing: 0.25,
+        color: 'white',
+    }
 });
