@@ -24,26 +24,6 @@ function HomeScreen({navigation}) {
     );
 }
 
-//TODO
-//  Different Settings need configured
-function Settings({navigation}) {
-
-    React.useEffect(() => {
-        // Use `setOptions` to update the button that we previously specified
-        // Now the button includes an `onPress` handler to update the count
-        navigation.setOptions({
-            headerRight: () => (
-                <Button onPress={() => navigation.navigate('Home')} title={"Save"}/>
-            ),
-        });
-    }, [navigation]);
-
-    return (
-        <View style={settings.container}>
-            <Text>Settings Page</Text>
-        </View>
-    );
-}
 
 //TODO
 //  Start game tracking system
@@ -68,6 +48,27 @@ function StartGame({navigation}) {
         <View style={newGame.container}>
             <Text>Start Game Page</Text>
             <View style={newGame.RedBox}/>
+        </View>
+    );
+}
+
+//TODO
+//  Different Settings need configured
+function Settings({navigation}) {
+
+    React.useEffect(() => {
+        // Use `setOptions` to update the button that we previously specified
+        // Now the button includes an `onPress` handler to update the count
+        navigation.setOptions({
+            headerRight: () => (
+                <Button onPress={() => navigation.navigate('Home')} title={"Save"}/>
+            ),
+        });
+    }, [navigation]);
+
+    return (
+        <View style={settings.container}>
+            <Text>Settings Page</Text>
         </View>
     );
 }
