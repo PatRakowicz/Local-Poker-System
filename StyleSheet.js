@@ -83,5 +83,13 @@ export const settings = StyleSheet.create({
         fontWeight: 'bold',
         letterSpacing: 0.25,
         color: 'white',
+    },
+    switchRow: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    switchTitle: {
+        fontSize: 18,
+        fontWeight: 'bold',
     }
 });

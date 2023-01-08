@@ -70,18 +70,21 @@ function Settings({navigation}) {
         );
     };
 
-    const [isEnabled, setIsEnabled] = useState(false);
+    const [value, setValue] = useState(false);
 
     return (
         <View style={settings.container}>
-            <Text>Enable option</Text>
-            <Switch
-                trackColor={{ false: "#767577", true: "#81b0ff" }}
-                thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
-                ios_backgroundColor="#3e3e3e"
-                onValueChange={setIsEnabled}
-                value={isEnabled}
-            />
+            <View style={settings.switchRow}>
+                <Text style={settings.switchTitle}>Switch title: </Text>
+                <Switch
+                    value={value}
+                    onValueChange={(newValue) => {
+                        console.log(`Switch is now ${newValue ? 'on' : 'off'}`);
+                        setValue(newValue);
+                    }}
+                    style={{marginLeft: 'auto'}}
+                />
+            </View>
 
             <Pressable style={settings.buttonSave} onPress={showAlert}>
                 <Text style={settings.buttonText}>Save</Text>
@@ -113,6 +116,7 @@ export default function App() {
                               component={Settings}
                               options={{
                                   headerBackVisible: false,
+                                  gestureEnabled: false,
                               }}/>
             </Stack.Navigator>
         </NavigationContainer>
